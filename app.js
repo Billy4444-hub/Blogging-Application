@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const userModel = require('./models/user');
@@ -7,8 +8,8 @@ const jwt = require('jsonwebtoken');
 const multerconfig = require('./config/multerConfig');
 
 app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // A middleware which converts form data to object and attaches it to req.body
+app.use(express.json()); // A middleware which parses incoming JSON requests and puts the parsed data in req.body
 app.use(cookieParser());
 app.use('/public', express.static('public'));
 const bcrypt = require('bcrypt');
@@ -152,6 +153,6 @@ function authenticateToken(req, res, next) {
      }
     }
 
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
+app.listen(process.env.PORT, () => {
+  console.log('Server is running on http://localhost:', process.env.PORT);
 });
