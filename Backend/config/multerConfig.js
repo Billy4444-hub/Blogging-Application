@@ -5,7 +5,7 @@ const crypto = require('crypto');
 //diskstorage configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/profile/upload'); // Set the destination folder for uploaded files
+    cb(null, "./public/profile"); // Set the destination folder for uploaded files
   },
   filename: function (req, file, cb) {
     crypto.randomBytes(16, (err, buffer) => {
@@ -17,6 +17,8 @@ const storage = multer.diskStorage({
 })
 
 //export upload variable
-const upload = multer({ storage: storage })
+const upload = multer({
+  storage,
+}) // storage is the methode name
 
 module.exports = upload;

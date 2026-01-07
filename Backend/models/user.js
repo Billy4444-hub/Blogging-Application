@@ -1,6 +1,4 @@
-const { name } = require('ejs');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/mydatabaseP1')
 
 const userSchema = mongoose.Schema({
     username: String,
@@ -10,7 +8,7 @@ const userSchema = mongoose.Schema({
     age: Number,
     profilePic: {
         type: String,
-        default: 'default.jpg' // Default profile picture
+        default: "http://localhost:4001/static/default.png",
     },
     post: [
         {
