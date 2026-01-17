@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const multerconfig = require('./config/multerConfig');
 const bcrypt = require('bcrypt');
+const cors = require('cors');
 
 const app = express();
 
@@ -16,6 +17,12 @@ app.use("/static", express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true })); // A middleware which converts form data to object and attaches it to req.body
 app.use(express.json()); // A middleware which parses incoming JSON requests and puts the parsed data in req.body
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: "https://blogging-application-two.vercel.app",
+    credentials: true
+  })
+);
 
 // MongoDB connection is done here
 mongoose.connect(process.env.MONGODB_URI)
