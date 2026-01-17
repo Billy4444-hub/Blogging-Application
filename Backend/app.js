@@ -78,7 +78,7 @@ app.get("/api/profile", authenticateToken, async (req, res) => {
   }
 });
 
-app.get('/api/like/:id', authenticateToken, async (req, res) => {
+app.post('/api/like/:id', authenticateToken, async (req, res) => {
   let post = await postModel.findOne({ _id: req.params.id }).populate('user');
 
   if (!post) {

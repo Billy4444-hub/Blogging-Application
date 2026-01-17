@@ -51,7 +51,7 @@ const Profile = () => {
 
   // Like / Unlike
   const handleLike = async (postId) => {
-    const res = await axios.get(`/api/like/${postId}`, {
+    const res = await axios.post(`/api/like/${postId}`, {
       withCredentials: true,
     });
 
