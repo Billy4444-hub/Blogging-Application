@@ -1,5 +1,5 @@
-import Register from "./pages/Register.jsx";
-import Login from "./pages/Login.jsx";
+import Register from "./pages/register.jsx";
+import Login from "./pages/login.jsx";
 import Profile from "./pages/profile.jsx";
 import Edit from "./pages/edit.jsx";
 import ProfileUpload from "./pages/profileupload.jsx";
