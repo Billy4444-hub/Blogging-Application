@@ -259,6 +259,8 @@ function authenticateToken(req, res, next) {
   }
 }
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on http://localhost:${process.env.PORT}`);
-});
+// app.listen(process.env.PORT, () => {
+//   console.log(`Server running on http://localhost:${process.env.PORT}`);
+// });
+
+module.exports = app;
