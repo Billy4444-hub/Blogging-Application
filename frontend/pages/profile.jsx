@@ -11,7 +11,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("/api/profile", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/profile`, {
           withCredentials: true,
         });
         setUser(res.data);
@@ -25,7 +25,7 @@ const Profile = () => {
 
   // Logout
   const handleLogout = async () => {
-    await axios.get("/api/logout", { withCredentials: true });
+    await axios.get(`${import.meta.env.VITE_API_URL}/api/logout`, { withCredentials: true });
     navigate("/login");
   };
 
@@ -36,7 +36,7 @@ const Profile = () => {
     if (!content.trim()) return;
 
     const res = await axios.post(
-      "/api/post",
+      `${import.meta.env.VITE_API_URL}/api/post`,
       { content },
       { withCredentials: true }
     );
@@ -51,7 +51,7 @@ const Profile = () => {
 
   // Like / Unlike
   const handleLike = async (postId) => {
-    const res = await axios.post(`/api/like/${postId}`, {
+    const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/like/${postId}`, {
       withCredentials: true,
     });
 

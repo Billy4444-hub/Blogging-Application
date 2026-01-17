@@ -12,7 +12,7 @@ const EditPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`/api/post/${id}`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/post/${id}`, {
           withCredentials: true,
         });
         setContent(res.data.content);
@@ -36,7 +36,7 @@ const EditPost = () => {
 
     try {
       await axios.post(
-        `/api/update/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/update/${id}`,
         { content },
         { withCredentials: true }
       );

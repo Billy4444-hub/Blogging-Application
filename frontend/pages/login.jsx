@@ -10,7 +10,7 @@ function Login() {
 
   try {
      await axios.post(
-      "/api/login",
+      `${import.meta.env.VITE_API_URL}/api/login`,
       {
         email: e.target.email.value,
         password: e.target.password.value,

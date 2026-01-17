@@ -10,7 +10,7 @@ const Register = () => {
 
     try{
       await axios.post(
-      "/api/register",
+      `${import.meta.env.VITE_API_URL}/api/register`,
       {
         username: e.target.username.value,
         name: e.target.name.value,

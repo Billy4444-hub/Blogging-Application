@@ -21,7 +21,7 @@ const UploadProfilePic = () => {
     try {
       setLoading(true);
 
-      await axios.post("/api/profileupload", formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/profileupload`, formData, {
         withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",
