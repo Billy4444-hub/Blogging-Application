@@ -188,13 +188,14 @@ app.post("/api/register", async (req, res) => {
 
     const token = jwt.sign(
       { email: newUser.email, userid: newUser._id },
-      "secretkey",
+      process.env.JWT_SECRET,
       { expiresIn: "1d" }
     );
 
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "lax",
+      sameSite: "none",
+      secure: true
     });
 
     return res.status(201).json({
@@ -222,13 +223,14 @@ app.post('/api/login', async (req, res) => {
 
       const token = jwt.sign(
         { email: user.email, userid: user._id },
-        "secretkey",
+        process.env.JWT_SECRET,
         { expiresIn: "1d" }
       );
 
       res.cookie("token", token, {
         httpOnly: true,
-        sameSite: "lax",
+        sameSite: "none",
+        secure: true
       });
 
       return res.status(200).json({
@@ -237,7 +239,8 @@ app.post('/api/login', async (req, res) => {
     });
 
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    console.error("LOGIN ERROR:", error);
+    return res.status(500).json({ message: "Server error" });
   }
 });
 
@@ -256,7 +259,7 @@ function authenticateToken(req, res, next) {
   }
 
   try {
-    const decoded = jwt.verify(token, "secretkey");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     next();
   } catch (error) {
