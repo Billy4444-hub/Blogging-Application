@@ -53,7 +53,7 @@ app.post( "/api/profileupload",
       }
 
       // save full public URL
-      user.profilePic = `/static/profile/${req.file.filename}`;
+      user.profilePic =  req.file.path;;
       await user.save();
 
       return res.status(200).json({
