@@ -97,8 +97,8 @@ const Profile = () => {
           <img
             src={
               user?.profilePic
-                ? `${API_URL}${user.profilePic}`
-                : `${API_URL}/static/default.png`
+                ? user.profilePic
+                : "/default-avatar.avif"
             }
             alt="profile"
             className="w-full h-full object-cover"
